@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Key System</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron&display=swap');
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: #0d0d0d;
+            font-family: 'Orbitron', sans-serif;
+            overflow: hidden;
+            color: #0ff;
+        }
+        .container {
+            background: rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 20px #0ff;
+            text-align: center;
+            animation: pulse 1.5s infinite alternate;
+        }
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px #0ff; }
+            100% { box-shadow: 0 0 20px #0ff; }
+        }
+        h1 {
+            margin-bottom: 15px;
+        }
+        .key-box {
+            background: #111;
+            padding: 15px;
+            border-radius: 5px;
+            border: 2px solid #0ff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #0ff;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .key-box:hover {
+            background: #222;
+        }
+        button {
+            background: #0ff;
+            color: #000;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+        button:hover {
+            background: #00d5ff;
+        }
+        p {
+            margin-top: 10px;
+            color: #0ff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Enter Your Key</h1>
+        <div class="key-box" id="keyBox" onclick="copyKey()">
+            <span id="key">Dex16324BD64-key</span>
+        </div>
+        <br>
+        <button onclick="copyKey()">Copy Key</button>
+        <p id="msg"></p>
+    </div>
+
+    <script>
+        function copyKey() {
+            var keyText = document.getElementById("key").textContent;
+            var textArea = document.createElement("textarea");
+            textArea.value = keyText;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand("copy");
+            document.body.removeChild(textArea);
+            document.getElementById("msg").textContent = "Key copied!";
+        }
+    </script>
+</body>
+</html>
